@@ -1,0 +1,61 @@
+Modern Networking Practical Concepts Overview
+=============================================
+
+1. Configure IP SLA Tracking and Path Control Topology
+------------------------------------------------------
+- IP SLA: Internet Protocol Service Level Agreement
+- What is it? A Cisco feature used to measure network performance like delay, jitter, and availability.
+- Why is it used? To monitor network paths and automatically switch to a backup path if the main one fails or becomes slow.
+- How it works: A router sends probes to test connectivity. If the test fails, the router triggers a change (like a static route switch or policy-based route).
+
+2. Using the AS_PATH Attribute
+------------------------------
+- AS: Autonomous System
+- AS_PATH: A Border Gateway Protocol (BGP) attribute that lists all the ASes a route has passed through.
+- Why is it used? To influence route selection and avoid routing loops. The shorter the AS_PATH, the more preferred the route.
+- How it works: Routers compare AS_PATH lengths. You can manually set path preferences using route maps or prepend AS numbers to influence decisions.
+
+3. Configuring IBGP and EBGP Sessions, Local Preference, and MED
+----------------------------------------------------------------
+- BGP: Border Gateway Protocol
+- IBGP: Internal BGP (within the same Autonomous System)
+- EBGP: External BGP (between different Autonomous Systems)
+- Local Preference: Used to choose the preferred exit path within an AS.
+- MED: Multi-Exit Discriminator - tells outside AS which link is better to reach a destination.
+- Why is it used? For advanced control over route selection and traffic flow between networks.
+
+4. Secure the Management Plane
+------------------------------
+- What is the Management Plane? It handles management tasks like SSH (Secure Shell), SNMP (Simple Network Management Protocol), and console access.
+- Why is it important? If attackers gain access, they can control or monitor your device.
+- How it's secured: Use strong passwords, enable SSH over Telnet, limit access using ACLs (Access Control Lists), configure login banners, and role-based access.
+
+5. Configure and Verify Path Control Using PBR
+----------------------------------------------
+- PBR: Policy-Based Routing
+- What is it? A technique that lets you control routing decisions based on policies, not just destination IP.
+- Why is it used? To route different traffic types on different paths — useful for QoS (Quality of Service), backup links, etc.
+- How it works: Define route-maps and access-lists to match traffic and set next-hop addresses manually.
+
+6. IP SLA + Remote SPAN in a Campus Environment
+-----------------------------------------------
+- SPAN: Switched Port Analyzer
+- What is Remote SPAN? A method to mirror traffic from one port/VLAN to another for remote monitoring.
+- Why is it used with IP SLA? To monitor both path quality and traffic in the network.
+- How it works: Configure IP SLA for network testing and Remote SPAN to send mirrored traffic to a central monitoring device.
+
+7. Inter-VLAN Routing
+---------------------
+- VLAN: Virtual Local Area Network
+- What is it? A way to divide a physical network into logical segments.
+- Why is it used? To separate traffic (e.g., staff and students) on the same switch for better security and performance.
+- What is Inter-VLAN Routing? Allows communication between devices in different VLANs.
+- How it works: Usually via a router-on-a-stick setup where one router port handles traffic for multiple VLANs using sub-interfaces.
+
+8. Simulating OpenFlow Using Mininet
+------------------------------------
+- OpenFlow: A protocol in Software-Defined Networking (SDN) for controller-based traffic forwarding.
+- SDN: Software-Defined Networking
+- Mininet: A Linux tool that simulates SDN networks using OpenFlow switches and hosts.
+- Why is it used? To separate the control plane (decision-making) from the data plane (packet forwarding).
+- How it works: Create a virtual network in Mininet and control it using an SDN controller like POX or Ryu, often using Python.
